@@ -1,0 +1,28 @@
+{
+  "name": "zn-verify",
+  "version": "1.0.0",
+  "description": "An NPM Package to verify user details",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ritikraushan1/zn-verify.git"
+  },
+  "keywords": [
+    "Verify",
+    "Name",
+    "Name",
+    "Verify",
+    "Email",
+    "Verify"
+  ],
+  "author": "Ritik Raushan",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Ritikraushan1/zn-verify/issues"
+  },
+  "homepage": "https://github.com/Ritikraushan1/zn-verify#readme"
+}
