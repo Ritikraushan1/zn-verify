@@ -34,11 +34,9 @@ Validates a name to ensure it contains only letters and spaces, with no consecut
 ```javascript
 import { verifyName } from "zn-verify";
 
-(async () => {
-  console.log(await verifyName("John Doe")); // true
-  console.log(await verifyName("John  Doe")); // false
-  console.log(await verifyName("John123")); // false
-})();
+console.log(verifyName("John Doe")); // true
+console.log(verifyName("John  Doe")); // false
+console.log(verifyName("John123")); // false
 ```
 
 #### Rules:
@@ -58,11 +56,9 @@ Validates an email address for general use or against a specific domain.
 ```javascript
 import { verifyEmail } from "zn-verify";
 
-(async () => {
-  console.log(await verifyEmail("example@gmail.com")); // true
-  console.log(await verifyEmail("example@gmail.com", "gmail.com")); // true
-  console.log(await verifyEmail("example@yahoo.com", "gmail.com")); // false
-})();
+console.log(verifyEmail("example@gmail.com")); // true
+console.log(verifyEmail("example@gmail.com", "gmail.com")); // true
+console.log(verifyEmail("example@yahoo.com", "gmail.com")); // false
 ```
 
 #### Parameters
@@ -86,12 +82,10 @@ Validates an Indian mobile number, supporting prefixes like `+91` and `0`.
 ```javascript
 import { verifyMobileNumber } from "zn-verify";
 
-(async () => {
-  console.log(await verifyMobileNumber("+919876543210")); // true
-  console.log(await verifyMobileNumber("09876543210")); // true
-  console.log(await verifyMobileNumber("9876543210")); // true
-  console.log(await verifyMobileNumber("1234567890")); // false
-})();
+console.log(verifyMobileNumber("+919876543210")); // true
+console.log(verifyMobileNumber("09876543210")); // true
+console.log(verifyMobileNumber("9876543210")); // true
+console.log(verifyMobileNumber("1234567890")); // false
 ```
 
 #### Rules
@@ -145,7 +139,12 @@ This library is licensed under the MIT License.
 
 ## Changelog
 
-### v1.1.0
+### v1.2.1 (Patch Update)
+
+- **Breaking Change:** Functions no longer return a promise. They are now synchronous for easier usage.
+- Updated documentation to reflect the change.
+
+### v1.2.0
 
 - Added `verifyName` function for name validation.
 - Enhanced `verifyEmail` function to support specific domain validation.
@@ -155,3 +154,13 @@ This library is licensed under the MIT License.
 ### v1.0.0
 
 - Initial release with basic validation functionality.
+
+```
+
+### Key Updates:
+1. **Simplified Usage:** Removed `async`/`await` from usage examples to reflect synchronous behavior.
+2. **Changelog:** Added a note for the patch update (`v1.2.1`) to highlight the change.
+3. **Clarity in Behavior:** Updated descriptions where promises were mentioned previously.
+
+You can now include this as the `README.md` file for your package!
+```

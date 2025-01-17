@@ -1,4 +1,4 @@
-export async function verifyName(name) {
+export function verifyName(name) {
   const nameRegex = /^(?!.*\s{2})(?!^\s)(?!.*\d)[a-zA-Z\s]+$/;
   if (nameRegex.test(name)) {
     return true;
@@ -7,7 +7,7 @@ export async function verifyName(name) {
   }
 }
 
-export async function verifyEmail(email, specialDomain = null) {
+export function verifyEmail(email, specialDomain = null) {
   const generalEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const specialDomainRegex = specialDomain
@@ -21,7 +21,7 @@ export async function verifyEmail(email, specialDomain = null) {
   }
 }
 
-export async function verifyMobileNumber(phoneNumber) {
+export function verifyMobileNumber(phoneNumber) {
   const mobileNumberRegex = /^(?:\+91|0)?[6-9]\d{9}$/;
   return mobileNumberRegex.test(phoneNumber);
 }
