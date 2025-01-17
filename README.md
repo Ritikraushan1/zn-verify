@@ -1,6 +1,10 @@
+Here's the updated **README.md** file with the newly added `validateAgeRange` function:
+
+---
+
 # Validation Utilities
 
-A simple JavaScript/TypeScript library that provides utility functions for validating names, emails, phone numbers, and calculating age. This library is designed to simplify common validation tasks in your projects.
+A simple JavaScript/TypeScript library that provides utility functions for validating names, emails, phone numbers, calculating age, and validating age ranges. This library is designed to simplify common validation tasks in your projects.
 
 ## Features
 
@@ -8,6 +12,7 @@ A simple JavaScript/TypeScript library that provides utility functions for valid
 - Validate emails for general purposes or specific domains.
 - Validate Indian mobile numbers, including support for `+91` and `0` prefixes.
 - Calculate age from a date in different formats (e.g., `dd/mm/yyyy`, `dd-mm-yyyy`, or a `Date` object).
+- Validate if an age falls within a specified range.
 
 ## Installation
 
@@ -123,6 +128,46 @@ console.log(calculateAge(new Date(2000, 0, 1))); // "24 years" (if today is 01/0
 
 ---
 
+### 5. `validateAgeRange`
+
+Validates if an age calculated from a date falls within a specified range.
+
+#### Usage
+
+```javascript
+import { validateAgeRange } from "zn-verify";
+
+// No age range specified (validates all ages)
+console.log(validateAgeRange("01/01/2000")); // true
+
+// Only maxAge specified
+console.log(validateAgeRange("01/01/2010", undefined, 20)); // true (if age <= 20)
+
+// Only minAge specified
+console.log(validateAgeRange("01/01/2005", 18)); // true (if age >= 18)
+
+// Both minAge and maxAge specified
+console.log(validateAgeRange("01/01/1990", 18, 30)); // false (if age is outside 18-30)
+```
+
+#### Parameters
+
+- `dateInput` (string | Date): The input date to validate.
+- `minAge` (number, optional): The minimum age (defaults to `0`).
+- `maxAge` (number, optional): The maximum age (defaults to `Infinity`).
+
+#### Output
+
+- Returns `true` if the age falls within the specified range.
+- Returns `false` otherwise.
+
+#### Behavior
+
+- Throws an error if the date is invalid or in the future.
+- Defaults `minAge` to `0` and `maxAge` to `Infinity` if not specified.
+
+---
+
 ## Error Handling
 
 All functions throw an error for invalid input formats. Ensure inputs follow the documented formats.
@@ -142,7 +187,8 @@ This library is licensed under the MIT License.
 ### v1.2.1 (Patch Update)
 
 - **Breaking Change:** Functions no longer return a promise. They are now synchronous for easier usage.
-- Updated documentation to reflect the change.
+- Added `validateAgeRange` to validate if an age is within a specified range.
+- Updated documentation to reflect the changes.
 
 ### v1.2.0
 
@@ -155,12 +201,6 @@ This library is licensed under the MIT License.
 
 - Initial release with basic validation functionality.
 
-```
+---
 
-### Key Updates:
-1. **Simplified Usage:** Removed `async`/`await` from usage examples to reflect synchronous behavior.
-2. **Changelog:** Added a note for the patch update (`v1.2.1`) to highlight the change.
-3. **Clarity in Behavior:** Updated descriptions where promises were mentioned previously.
-
-You can now include this as the `README.md` file for your package!
-```
+Let me know if further adjustments are needed!

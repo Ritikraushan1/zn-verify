@@ -75,3 +75,51 @@ export function calculateAge(dateInput) {
     return diffInYears === 1 ? "1 year" : `${diffInYears} years`;
   }
 }
+
+export function validateAgeRange(dateInput, minAge = 0, maxAge = Infinity) {
+  let birthDate;
+
+  // Parse the input into a Date object
+  if (typeof dateInput === "string") {
+    const sanitizedInput = dateInput.replace(/-/g, "/");
+    const [day, month, year] = sanitizedInput.split("/");
+
+    if (!day || !month || !year) {
+      throw new Error(
+        "Invalid date format. Expected dd/mm/yyyy or dd-mm-yyyy."
+      );
+    }
+
+    birthDate = new Date(`${year}/${month}/${day}`);
+  } else if (dateInput instanceof Date) {
+    birthDate = dateInput;
+  } else {
+    throw new Error(
+      "Invalid date input. Expected dd/mm/yyyy, dd-mm-yyyy, or a Date object."
+    );
+  }
+
+  // Check if the parsed date is valid
+  if (isNaN(birthDate)) {
+    throw new Error("Invalid date. Please provide a valid date.");
+  }
+
+  const today = new Date();
+  const diffInMilliseconds = today - birthDate;
+
+  if (diffInMilliseconds < 0) {
+    throw new Error("Date cannot be in the future.");
+  }
+
+  // Calculate the age in years
+  const ageInYears = Math.floor(
+    diffInMilliseconds / (1000 * 60 * 60 * 24 * 365.25)
+  );
+
+  // Validate if the age falls within the range
+  if (ageInYears < minAge || ageInYears > maxAge) {
+    return false;
+  }
+
+  return true;
+}
