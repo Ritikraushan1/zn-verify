@@ -1,6 +1,6 @@
 {
   "name": "zn-verify",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "An NPM Package to verify user details",
   "main": "index.js",
   "type": "module",
